@@ -172,8 +172,6 @@ install_cli_binary() {
   local bin_dir="${MULTICA_BIN_DIR:-/usr/local/bin}"
   if [ -w "$bin_dir" ]; then
     mv "$tmp_dir/multica" "$bin_dir/multica"
-  elif command_exists sudo; then
-    sudo mv "$tmp_dir/multica" "$bin_dir/multica"
   else
     bin_dir="$HOME/.local/bin"
     mkdir -p "$bin_dir"
@@ -217,7 +215,6 @@ get_selfhost_ref() {
     printf '%s' "$latest"
     return
   fi
-
   printf '%s' "main"
 }
 
